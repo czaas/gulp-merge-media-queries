@@ -1,4 +1,8 @@
-# gulp-combine-media-queries
+# gulp-merge-media-queries
+
+Fixed Nodejs 4.0 error: 'TypeError: must start with number, buffer, array or string'.
+
+Forked from [gulp-combine-media-queries](https://github.com/konitter/gulp-combine-media-queries).
 
 Inspired from [grunt-combine-media-queries](https://github.com/buildingblocks/grunt-combine-media-queries).
 
@@ -11,16 +15,16 @@ This was written as a solution to a problem we have using LESS CSS for our mobil
 ## Install
 
 ```
-npm install gulp-combine-media-queries --save-dev
+npm install gulp-merge-media-queries --save-dev
 ```
 
 ## Usage
 ```javascript
-var cmq = require('gulp-combine-media-queries');
+var mmq = require('gulp-merge-media-queries');
 
-gulp.task('cmq', function () {
+gulp.task('mmq', function () {
   gulp.src('src/**/*.css')
-    .pipe(cmq({
+    .pipe(mmq({
       log: true
     }))
     .pipe(gulp.dest('dist'));

@@ -149,7 +149,7 @@ module.exports = function(options) {
     processedCSS.media.blank = [];
     processedCSS.keyframes = [];
 
-    file.contents = new Buffer(cssJson);
+    // file.contents = new Buffer(cssJson);
 
     // For every rule in the stylesheet...
     cssJson.stylesheet.rules.forEach(function(rule) {
