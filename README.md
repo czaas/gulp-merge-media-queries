@@ -51,6 +51,12 @@ Type: `number` Default: `0`
 
 Will leave the media query in the main file if less than this number.
 
+### basename
+
+Type: `String` Default: `responsive`
+
+Change the basename of output files if using use_external option
+
 ## License
 
 (MIT License)

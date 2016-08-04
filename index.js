@@ -15,7 +15,8 @@ module.exports = function(options) {
     log: false,
     ext: false,
     use_external: false,
-    leave_if_less_than: 0
+    leave_if_less_than: 0,
+    basename: 'responsive'
   });
 
   // Log info only when 'options.log' is set to true
@@ -129,7 +130,7 @@ module.exports = function(options) {
     }
 
     var filename = path.relative(file.cwd, file.path);
-    var extFilename = filename.replace('.css', '.responsive.css');
+    var extFilename = filename.replace('.css', '.' + options.basename + '.css');
     var source = file.contents.toString('utf8');
     var cssJson = parseCss(source);
     var strStyles = [];
