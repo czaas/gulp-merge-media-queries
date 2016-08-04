@@ -45,6 +45,12 @@ Type: `boolean` Default: `false`
 
 Writes media queries into external file, named as [src].responsive.css
 
+### leave_if_less_than
+
+Type: `number` Default: `0`
+
+Will leave the media query in the main file if less than this number.
+
 ## License
 
 (MIT License)
