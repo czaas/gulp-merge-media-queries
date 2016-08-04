@@ -14,7 +14,8 @@ module.exports = function(options) {
   var options = defaults(options || {}, {
     log: false,
     ext: false,
-    use_external: false
+    use_external: false,
+    leave_if_less_than: 0
   });
 
   // Log info only when 'options.log' is set to true
@@ -296,7 +297,11 @@ module.exports = function(options) {
     var outputMedia = function(media) {
       if (options.use_external) {
         media.forEach(function(item) {
-          strMediaStyles += processMedia(item);
+          if(item.sortVal < options.leave_if_less_than) {
+            strStyles += processMedia(item);
+          } else {
+            strMediaStyles += processMedia(item);
+          }
         });
       } else {
         media.forEach(function(item) {
