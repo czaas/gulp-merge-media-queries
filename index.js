@@ -14,7 +14,9 @@ module.exports = function(options) {
   var options = defaults(options || {}, {
     log: false,
     ext: false,
-    use_external: false
+    use_external: false,
+    leave_if_less_than: 0,
+    basename: 'responsive'
   });
 
   // Log info only when 'options.log' is set to true
@@ -128,7 +130,7 @@ module.exports = function(options) {
     }
 
     var filename = path.relative(file.cwd, file.path);
-    var extFilename = filename.replace('.css', '.responsive.css');
+    var extFilename = filename.replace('.css', '.' + options.basename + '.css');
     var source = file.contents.toString('utf8');
     var cssJson = parseCss(source);
     var strStyles = [];
@@ -296,7 +298,11 @@ module.exports = function(options) {
     var outputMedia = function(media) {
       if (options.use_external) {
         media.forEach(function(item) {
-          strMediaStyles += processMedia(item);
+          if(item.sortVal < options.leave_if_less_than) {
+            strStyles += processMedia(item);
+          } else {
+            strMediaStyles += processMedia(item);
+          }
         });
       } else {
         media.forEach(function(item) {
