@@ -298,7 +298,10 @@ module.exports = function(options) {
     var outputMedia = function(media) {
       if (options.use_external) {
         media.forEach(function(item) {
-          if(item.sortVal < options.leave_if_less_than) {
+          // if using max-width in media query
+          if (item.rule.indexOf('min-width') === -1) {
+            strStyles += processMedia(item);
+          } else if (item.sortVal < options.leave_if_less_than) {
             strStyles += processMedia(item);
           } else {
             strMediaStyles += processMedia(item);
